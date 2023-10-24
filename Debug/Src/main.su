@@ -1,3 +1,1 @@
-../Src/main.c:23:6:LightsOn	4	static
-../Src/main.c:29:6:LightsOff	4	static
-../Src/main.c:38:5:main	8	static
+../Src/main.c:13:5:main	8	static

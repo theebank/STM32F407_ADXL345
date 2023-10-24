@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := UARTDrivers
+BUILD_ARTIFACT_NAME := ADXL345
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-UARTDrivers.elf \
+ADXL345.elf \
 
 MAP_FILES += \
-UARTDrivers.map \
+ADXL345.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-UARTDrivers.list \
+ADXL345.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: UARTDrivers.elf secondary-outputs
+main-build: ADXL345.elf secondary-outputs
 
 # Tool invocations
-UARTDrivers.elf UARTDrivers.map: $(OBJS) $(USER_OBJS) D:\stm32f4-github\UARTDrivers\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "UARTDrivers.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\stm32f4-github\UARTDrivers\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="UARTDrivers.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ADXL345.elf ADXL345.map: $(OBJS) $(USER_OBJS) D:\stm32f4-github\ADXL345\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ADXL345.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"D:\stm32f4-github\ADXL345\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADXL345.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-UARTDrivers.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "UARTDrivers.list"
+ADXL345.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "ADXL345.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) UARTDrivers.elf UARTDrivers.list UARTDrivers.map default.size.stdout
+	-$(RM) ADXL345.elf ADXL345.list ADXL345.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
