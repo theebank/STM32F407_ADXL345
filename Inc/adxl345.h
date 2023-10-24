@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include "i2c.h"
+#include "spi.h"
 #include "stm32f4xx.h"
 
 #define DEVID_R			(0x00)
@@ -25,5 +26,9 @@
 
 void adxl_init(void);
 void adxl_read_values(uint8_t reg);
+
+
+void adxl_read_spi(uint8_t address, uint8_t *rxdata);
+void adxl_init_spi(void);
 
 #endif /* ADXL345_H_ */
